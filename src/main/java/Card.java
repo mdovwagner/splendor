@@ -27,4 +27,11 @@ public class Card {
     public String toString() {
         return gem.toString() + ", Cost: " + cost.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Card)) return false;
+        Card c = (Card) other;
+        return (gem == gem && cost == cost && points == points);
+    }
 }

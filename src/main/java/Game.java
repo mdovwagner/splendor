@@ -6,7 +6,9 @@ public class Game {
     private List<Player> players = new ArrayList<>();
     private Bundle<Gem> gems = new Bundle<>();
     private List<Noble> nobles = new ArrayList<>();
-    private List<Card> cards = new ArrayList<>();
+    private List<Card> tier1 = new ArrayList<>();
+    private List<Card> tier2 = new ArrayList<>();
+    private List<Card> tier3 = new ArrayList<>();
     private int curr = 0;
 
 
