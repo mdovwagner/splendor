@@ -24,14 +24,21 @@ public class Player {
     public Bundle<Gem> buyCard(Card card) throws Exception {
         Bundle<Gem> spentGems = new Bundle<>();
         for (Gem g : card.cost().keySet()) {
+            int wilds = gems.amount(Gem.WILD);
             int gemCost = card.cost().amount(g);
-            if (gemCost > hand.amount(g) + gems.amount(g)) throw new Exception("Not enough gems");
-            int spent = Integer.max(gemCost - hand.amount(g),0);
-            System.out.println(spent);
+            int deficit = gemCost - (hand.amount(g) + gems.amount(g));       
+            if(deficit > 0){
+            	if (deficit > wilds){            	
+                	throw new Exception("Not enough gems");
+                }
+            	spentGems.addMultiple(Gem.WILD,deficit);
+            }
+            int spent = Integer.max(gemCost - hand.amount(g) - deficit,0);
+            System.out.println(g.toString() + " " + spent);
             spentGems.addMultiple(g,spent);
-            gems.subtractMultiple(g,spent);
         }
         addCard(card);
+        gems.subtractBundle(spentGems);
         return spentGems;
     }
 

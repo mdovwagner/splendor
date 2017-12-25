@@ -28,7 +28,7 @@ public class Game {
         if (new HashSet(chosen).size() == chosen.size() && chosen.size() == 2) {
             if (gems.amount(chosen.get(0)) >= 4) gems.subtractMultiple(chosen.get(0),2);
             else throw new Exception("Not enough to take 2 of the same");
-        } else if (chosen.size() <= 3) {
+        } else if (chosen.size() <= 3) { //@Michael don't we need to check they are all different
             for (Gem g : chosen) {
                 if (gems.amount(g) > 0) gems.subtract(g);
             }
