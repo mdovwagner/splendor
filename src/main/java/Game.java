@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Game {
 
     private static final int GEM_NUMBER = 7;
     private List<Player> players = new ArrayList<>();
-    private Map<Gem,Integer> gems = new HashMap<>();
+    private Bundle<Gem> gems = new Bundle<>();
     private List<Noble> nobles = new ArrayList<>();
     private List<Card> cards = new ArrayList<>();
     private int curr = 0;
@@ -20,22 +17,31 @@ public class Game {
             players.add(new Player(name));
         }
         // Add gems
-        for (Gem g: Gem.values()) gems.put(g,GEM_NUMBER);
+        for (Gem g: Gem.values()) gems.addMultiple(g,GEM_NUMBER);
         // Add cards
         // @Lewis plz do this
 
 
     }
 
-    public void collectGems(List<Gem> chosen) {
-        if (chosen.size() == 3) {
+    public void collectGems(List<Gem> chosen) throws Exception{
+        if (new HashSet(chosen).size() == chosen.size() && chosen.size() == 2) {
+            if (gems.amount(chosen.get(0)) >= 4) gems.subtractMultiple(chosen.get(0),2);
+            else throw new Exception("Not enough to take 2 of the same");
+        } else if (chosen.size() <= 3) {
             for (Gem g : chosen) {
-//                if (gems.get(g) > 0) gems.
+                if (gems.amount(g) > 0) gems.subtract(g);
             }
-        } else if (chosen.size() == 2) {
-
-        }
+        } else throw new Exception("Can't pick those gems");
+        players.get(curr).drawGems(new Bundle(chosen));
     }
+
+    public void buyCard(Card card) throws Exception {
+        Bundle<Gem> spentGems = players.get(curr).buyCard(card);
+        gems.subtractBundle(spentGems);
+        // Add new card
+    }
+
 
 
     private void nextPlayer(){

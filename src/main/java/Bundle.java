@@ -31,9 +31,12 @@ public class Bundle<T> extends HashMap<T,Integer> {
     public void add(T key) {
         putIfAbsent(key,0);
         compute(key,(Object x,Integer i) -> i+1);
+        if (get(key) == 0) remove(key);
+
     }
 
     public void addMultiple(T key,int amount) {
+        if (amount == 0) return;
         putIfAbsent(key,0);
         compute(key,(Object x,Integer i) -> i+amount);
         if (get(key) == 0) remove(key);
@@ -45,10 +48,23 @@ public class Bundle<T> extends HashMap<T,Integer> {
         if (get(key) == 0) remove(key);
     }
 
+    public void subtractMultiple(T key, int amount) throws Exception{
+        if (amount == 0) return;
+        if (!containsKey(key) || get(key) == 0) throw new Exception("Key not found");
+        compute(key,(Object x,Integer i) -> i-amount);
+        if (get(key) == 0) remove(key);
+    }
+
 
     public void addBundle(Bundle<T> other) {
         for (T o : other.keySet()) {
             addMultiple(o,other.get(o));
+        }
+    }
+
+    public void subtractBundle(Bundle<T> other) throws Exception {
+        for (T o : other.keySet()) {
+            subtractMultiple(o,other.get(o));
         }
     }
 }
