@@ -26,7 +26,7 @@ public class Player {
         for (Gem g : card.cost().keySet()) {
             int wilds = gems.amount(Gem.WILD);
             int gemCost = card.cost().amount(g);
-            int deficit = gemCost - (hand.amount(g) + gems.amount(g));       
+            int deficit = Integer.max(gemCost - (hand.amount(g) + gems.amount(g)),0);
             if(deficit > 0){
             	if (deficit > wilds){            	
                 	throw new Exception("Not enough gems");

@@ -21,7 +21,7 @@ public class Main {
         System.out.println(b.toString());
         System.out.println(b.toList().toString());
 
-        Bundle<Gem> b2 = new Bundle<Gem>(Gem.RED,Gem.GREEN,Gem.GREEN);
+        Bundle<Gem> b2 = new Bundle<>(Gem.RED,Gem.GREEN,Gem.GREEN);
         System.out.println(b2);
         b2.subtract(Gem.RED);
         System.out.println(b2);
