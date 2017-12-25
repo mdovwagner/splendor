@@ -8,7 +8,7 @@ import java.util.Map;
 public class Main {
 
 
-    @Test
+//    @Test
     public void testPiles() throws Exception{
         Bundle<Gem> b = new Bundle<>();
 
@@ -27,9 +27,23 @@ public class Main {
         System.out.println(b2);
 
     }
-    
 
     @Test
+    public void testGame() throws Exception {
+        Game g = new Game("Michael","Lewis");
+        System.out.println(g.getDisplay().keySet());
+        //Michael
+        g.collectGems(Arrays.asList(Gem.BLUE,Gem.BLUE));
+        g.collectGems(Arrays.asList(Gem.WHITE,Gem.BLUE, Gem.GREEN));
+        Card c = new Card(Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
+        System.out.println(g.getPlayers().get(0).toString());
+        g.buyCard(c);
+        System.out.println(g.getPlayers().get(0).toString());
+        System.out.println(g.getDisplay());
+    }
+    
+
+//    @Test
     public void testPlayers() throws Exception{
         Card c1 = new Card(Gem.BLACK,new Bundle<Gem>(Gem.RED,Gem.RED,Gem.RED),1);
         Card c2 = new Card(Gem.RED,new Bundle<Gem>(Gem.BLACK,Gem.GREEN),0);

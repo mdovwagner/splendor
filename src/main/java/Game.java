@@ -108,7 +108,7 @@ public class Game {
 
 
 
-    public Game(String[] playerNames) {
+    public Game(String... playerNames) {
         // Add players
         for (String name : playerNames) {
             players.add(new Player(name));
@@ -117,9 +117,9 @@ public class Game {
         for (Gem g: Gem.values()) gems.addMultiple(g,GEM_NUMBER);
         // Add cards
         addcards();
-        Collections.shuffle(tier1);
-        Collections.shuffle(tier2);
-        Collections.shuffle(tier3);
+//        Collections.shuffle(tier1);
+//        Collections.shuffle(tier2);
+//        Collections.shuffle(tier3);
         for (int i = 0; i < 4; i++) {
             display.put(tier1.remove(0),1);
             display.put(tier2.remove(0),2);
@@ -130,6 +130,10 @@ public class Game {
 
     public Map<Card,Integer> getDisplay(){
         return display;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 
     public void collectGems(List<Gem> chosen) throws Exception{
@@ -155,13 +159,15 @@ public class Game {
         if (tier == 2) display.put(tier2.remove(0),2);
         if (tier == 3) display.put(tier3.remove(0),3);
         // bug: END OF GAME RUN OUT
+    }
 
+    public void reserveCard(Card card) throws Exception {
 
     }
 
 
 
-    private void nextPlayer(){
+    public void nextPlayer(){
         curr = (curr + 1) % players.size();
     }
 

@@ -8,11 +8,18 @@ public class Bundle<T> extends HashMap<T,Integer> {
 
     }
 
+    public Bundle(List<T> a){
+        for (T o : a) {
+            add(o);
+        }
+    }
+
     public Bundle(T... a){
         for (T o : a) {
             add(o);
         }
     }
+
 
     public List<T> toList(){
         List<T> L = new ArrayList<>();
@@ -67,4 +74,6 @@ public class Bundle<T> extends HashMap<T,Integer> {
             subtractMultiple(o,other.get(o));
         }
     }
+
+
 }
