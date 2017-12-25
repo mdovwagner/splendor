@@ -14,9 +14,9 @@ public class Main {
 
         b.add(Gem.RED);
         b.add(Gem.RED);
-        b.add(Gem.BROWN);
-        b.add(Gem.BROWN);
-        b.subtract(Gem.BROWN);
+        b.add(Gem.BLACK);
+        b.add(Gem.BLACK);
+        b.subtract(Gem.BLACK);
         b.addMultiple(Gem.BLUE,3);
         System.out.println(b.toString());
         System.out.println(b.toList().toString());
@@ -31,14 +31,14 @@ public class Main {
 
     @Test
     public void testPlayers() throws Exception{
-        Card c1 = new Card(Gem.BROWN,new Bundle<Gem>(Gem.RED,Gem.RED,Gem.RED),1);
-        Card c2 = new Card(Gem.RED,new Bundle<Gem>(Gem.BROWN,Gem.GREEN),0);
-        Card c3 = new Card(Gem.GREEN,new Bundle<Gem>(Gem.RED,Gem.BROWN),0);
+        Card c1 = new Card(Gem.BLACK,new Bundle<Gem>(Gem.RED,Gem.RED,Gem.RED),1);
+        Card c2 = new Card(Gem.RED,new Bundle<Gem>(Gem.BLACK,Gem.GREEN),0);
+        Card c3 = new Card(Gem.GREEN,new Bundle<Gem>(Gem.RED,Gem.BLACK),0);
         Player p1 = new Player("Michael");
 
         System.out.println(p1.toString());
         System.out.println("gets gems, Red, Red, Brown, Wild");
-        p1.drawGems(new Bundle<Gem>(Gem.RED,Gem.BROWN,Gem.RED,Gem.WILD,Gem.WILD));
+        p1.drawGems(new Bundle<Gem>(Gem.RED,Gem.BLACK,Gem.RED,Gem.WILD,Gem.WILD));
         System.out.println(p1.toString());
 
         System.out.println("Buys card 1");
