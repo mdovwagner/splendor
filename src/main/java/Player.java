@@ -1,40 +1,42 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Player {
     private String name;
-    private Map<Gem,Integer> gems = new HashMap<>();
-    private Map<Card,Integer> hand = new HashMap<>();
+    private Bundle<Gem> gems = new Bundle<>();
+    private Bundle<Gem> hand = new Bundle<>();
     private int points = 0;
 
     public Player(String name){
         this.name = name;
     }
 
-    public void drawGems(List<Gem> newGems) {
-        for (Gem g : newGems) {
-            gems.putIfAbsent(g,0);
-            gems.compute(g,(Gem x, Integer i)->i+1);
-        }
+    public void drawGems(Bundle<Gem> newGems) {
+        gems.addBundle(newGems);
     }
 
     private void addCard(Card card) {
-        hand.putIfAbsent(card,0);
-        hand.compute(card,(Card c,Integer i) -> i+1);
+        points += card.points();
+        hand.add(card.gem());
     }
 
-    public Map<Gem,Integer> buyCard(Card card) throws NotEnoughGemsException {
-        Map<Gem,Integer> spentGems = new HashMap<>();
-        for (Gem g : card.getCost().keySet()) {
-            int gemCost = card.getCost().get(g);
-            if (gemCost > hand.get(g) + gems.get(g)) throw new NotEnoughGemsException(g);
-            int spent = gemCost - hand.get(g);
-            spentGems.put(g,spent);
-            gems.compute(g,(Gem x, Integer i)-> i - spent);
+    public Map<Gem,Integer> buyCard(Card card) throws Exception {
+        Bundle<Gem> spentGems = new Bundle<>();
+        for (Gem g : card.cost().keySet()) {
+            int gemCost = card.cost().amount(g);
+            if (gemCost > hand.amount(g) + gems.amount(g)) throw new Exception("Not enough gems");
+            int spent = gemCost - hand.amount(g);
+            spentGems.addMultiple(g,spent);
+            gems.addMultiple(g,-spent);
         }
+        addCard(card);
         return spentGems;
+    }
+
+    @Override
+    public String toString(){
+        return "Player " + name + "\n\tPoints: "+  Integer.toString(points)+ "\n\tCards: " + hand + "\n\tGems: " + gems;
     }
 
 
