@@ -19,6 +19,12 @@ public class Bundle<T> extends HashMap<T,Integer> {
             add(o);
         }
     }
+    
+    public Bundle(T[] names, int[] num){
+    	for (int i = 0; i < names.length; i++){
+    		addMultiple(names[i],num[i]);
+    	}
+    }
 
 
     public List<T> toList(){

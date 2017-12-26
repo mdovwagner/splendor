@@ -37,9 +37,17 @@ public class Main {
         g.collectGems(Arrays.asList(Gem.WHITE,Gem.BLUE, Gem.GREEN));
         Card c = new Card(Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
         System.out.println(g.getPlayers().get(0).toString());
+        g.reserveCard(c);
+        System.out.println(g.getPlayers().get(0).toString());
+        g.collectGems(Arrays.asList(Gem.RED,Gem.BLUE, Gem.GREEN));
+        System.out.println(g.getPlayers().get(0).toString());
+        Card c2 = new Card(Gem.WHITE,new Bundle<>(Gem.RED,Gem.GREEN,Gem.BLUE,Gem.BLACK),0);
+        g.buyCard(c2);
+        System.out.println(g.getPlayers().get(0).toString());
         g.buyCard(c);
         System.out.println(g.getPlayers().get(0).toString());
         System.out.println(g.getDisplay());
+        System.out.println(g.getGems());
     }
     
 
