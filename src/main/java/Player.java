@@ -53,6 +53,14 @@ public class Player {
 		reserves.add(card);
 	}
 
+    public Bundle<Gem> getTableau() {
+        return tableau;
+    }
+
+    public void addPoints(int p) {
+        points += p;
+    }
+
     @Override
     public String toString(){
         return "Player " + name + "\n\tPoints: "+  Integer.toString(points)+ "\n\tCards: " 

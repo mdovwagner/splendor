@@ -2,8 +2,9 @@ import java.util.*;
 
 public class Game {
 
-	public static final Gem[] ORD = { Gem.RED, Gem.GREEN, Gem.BLUE, Gem.BLACK, Gem.WHITE, Gem.WILD };
-    private static final int GEM_NUMBER = 7;
+	public static final Gem[] ORD = { Gem.RED, Gem.GREEN, Gem.BLUE, Gem.WHITE, Gem.BLACK, Gem.WILD };
+    private static final int GEM_NUMBER = 4;
+    private static final int NOBLES_NUMBER = 3;
     private List<Player> players = new ArrayList<>();
     private Bundle<Gem> gems = new Bundle<>();
     private List<Noble> nobles = new ArrayList<>();
@@ -124,6 +125,13 @@ public class Game {
 //        Collections.shuffle(tier1);
 //        Collections.shuffle(tier2);
 //        Collections.shuffle(tier3);
+
+        // add nobles;
+        nobles.add(new Noble(3,new Bundle(Arrays.asList(Gem.BLACK,Gem.RED,Gem.GREEN),Arrays.asList(3,3,3))));
+        nobles.add(new Noble(3,new Bundle(Arrays.asList(Gem.WHITE,Gem.BLACK),Arrays.asList(4,4))));
+        nobles.add(new Noble(3,new Bundle(Arrays.asList(Gem.BLUE,Gem.WHITE),Arrays.asList(4,4))));
+
+
         for (int i = 0; i < 4; i++) {
             display.put(tier1.remove(0),1);
             display.put(tier2.remove(0),2);
@@ -173,6 +181,14 @@ public class Game {
 	        if (tier == 2) display.put(tier2.remove(0),2);
 	        if (tier == 3) display.put(tier3.remove(0),3);
 	        // bug: END OF GAME RUN OUT
+        }
+        // check if got nobles
+        for (Noble n : nobles) {
+            if (n.isConditionMet(players.get(curr).getTableau())) {
+                players.get(curr).addPoints(n.getPoints());
+                nobles.remove(n);
+                break; // can't get more than one
+            }
         }
     }
 

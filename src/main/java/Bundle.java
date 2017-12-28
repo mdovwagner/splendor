@@ -8,6 +8,12 @@ public class Bundle<T> extends HashMap<T,Integer> {
 
     }
 
+    public Bundle(List<T> names, List<Integer> num){
+        for (int i = 0; i < names.size(); i++){
+            addMultiple(names.get(i),num.get(i));
+        }
+    }
+
     public Bundle(List<T> a){
         for (T o : a) {
             add(o);
@@ -20,11 +26,7 @@ public class Bundle<T> extends HashMap<T,Integer> {
         }
     }
     
-    public Bundle(T[] names, int[] num){
-    	for (int i = 0; i < names.length; i++){
-    		addMultiple(names[i],num[i]);
-    	}
-    }
+
 
 
     public List<T> toList(){
