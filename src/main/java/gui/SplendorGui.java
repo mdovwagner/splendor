@@ -71,11 +71,12 @@ public class SplendorGui extends JPanel {
         turns.setText("Turn: "+Integer.toString(splendor.getTurn()));
     }
     
-    private JPanel createCard(int bonus, int[] cost){
+    private JPanel createCard(Color c, int bonus, int[] cost){
     	JPanel card = new JPanel(new GridLayout(5,3));
     	card.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	JLabel bonusLabel = new JLabel(bonus + "");
     	bonusLabel.setFont(new Font("Arial",20,40));
+    	bonusLabel.setForeground(c);
     	for(int i = 0; i <5; i ++){
     		if(i==0) card.add(bonusLabel);
     		else card.add(new JLabel());
@@ -123,18 +124,14 @@ public class SplendorGui extends JPanel {
             for(int j = 0; j < 5; j ++){
             	cost[j] = c.cost().amount(Game.GEM_ORD[j]);
             }
-            boardCards.add(createCard(c.points(), cost));
+            boardCards.add(createCard(gemColor(c.gem()), c.points(), cost));
         }
         return boardCards;
     }
 
     private void updateBoardCards() {
-        for (int i = 0; i < splendor.getDisplay().size(); i++) {
-            Card c = splendor.getDisplay().get(i);
-            String text = "Bonus: "+ c.points() + "; Cost: ";
-            for (Gem g : c.cost().keySet()) text += g.toString().substring(0,3) +":"+ c.cost().get(g)+", ";
-            boardCardLabels[i].setText(text);
-        }
+    	//Why doesnt this work? It isn't updating with the new cards from the display (I also know this isn't ideal but yeah)
+    	initBoardCards();
     }
 
     private JPanel initHand() {
