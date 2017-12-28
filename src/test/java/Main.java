@@ -31,9 +31,15 @@ public class Main {
     @Test
     public void testGameCopy() throws Exception {
         Game g = new Game("Michael");
-        g = g.getNextMoves().get(0);
-        System.out.println(g.getGems());
-
+        System.out.println(g.getDisplay());
+        g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
+        g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
+//        g.buyCard(new Card(1,Gem.BLUE,new Bundle<>(Gem.WHITE,Gem.GREEN,Gem.GREEN,Gem.RED,Gem.RED),0));
+//        System.out.println(g.getDisplay());
+        for (Game game : g.getNextMoves()) {
+            System.out.println(game.getDisplay());
+        }
+        System.out.println(g.getNextMoves().size());
     }
 
 

@@ -123,7 +123,7 @@ public class Game {
         }
         // Add cards
         addcards();
-        Random r = new Random(6521);
+        Random r = new Random(617489);
         Collections.shuffle(tier1,r);
         Collections.shuffle(tier2,r);
         Collections.shuffle(tier3,r);
@@ -301,6 +301,7 @@ public class Game {
             try {
                 Game g = new Game(this);
                 g.buyCard(c);
+                moves.add(g);
             } catch (Exception e) {
 
             }
