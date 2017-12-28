@@ -15,6 +15,7 @@ public class SplendorGui extends JPanel {
     private JLabel[] handLabels;
     // controller
     private JButton step;
+    private JLabel turns;
 
     public SplendorGui(Game splendor) {
         this.splendor = splendor;
@@ -40,13 +41,14 @@ public class SplendorGui extends JPanel {
         updateBoardGems();
         updateBoardCards();
         updateHand();
+        updateController();
     }
 
 
     private JPanel initController(){
         JPanel controller = new JPanel();
         controller.setName("Controller");
-        controller.setLayout(new GridLayout(1,1));
+        controller.setLayout(new GridLayout(2,1));
         step = new JButton("Step");
         step.addActionListener((e)-> {
             List<Game> nextMoves = splendor.getNextMoves();
@@ -56,7 +58,15 @@ public class SplendorGui extends JPanel {
             updateAll();
         });
         controller.add(step);
+        turns = new JLabel();
+        turns.setFont(new Font("Arial",20,20));
+        turns.setText("Turn: "+Integer.toString(splendor.getTurn()));
+        controller.add(turns);
         return controller;
+    }
+
+    private void updateController(){
+        turns.setText("Turn: "+Integer.toString(splendor.getTurn()));
     }
 
 

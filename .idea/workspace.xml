@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bfb5f57-8a8a-4c01-944f-18fff5277f5b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Game.java" afterPath="$PROJECT_DIR$/src/main/java/core/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" afterPath="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,12 +25,14 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+            <state relative-caret-position="929">
+              <caret line="158" column="29" lean-forward="false" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
               <folding>
                 <element signature="method#addcards#0;class#Game#0" expanded="false" />
-                <element signature="e#15901#15902#0" expanded="true" />
-                <element signature="e#15941#15942#0" expanded="true" />
+                <element signature="e#16007#16008#0" expanded="true" />
+                <element signature="e#16047#16048#0" expanded="true" />
+                <element signature="e#16075#16076#0" expanded="true" />
+                <element signature="e#16102#16103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,7 +41,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
+            <state relative-caret-position="222">
               <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,10 +53,12 @@
       <file leaf-file-name="SplendorGui.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gui/SplendorGui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="70" column="17" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="17" />
+            <state relative-caret-position="68">
+              <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1880#1881#0" expanded="true" />
+                <element signature="e#1956#1957#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -374,8 +379,8 @@
         <option value="$PROJECT_DIR$/src/test/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/GemCircle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/core/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" />
       </list>
     </option>
@@ -689,8 +694,10 @@
           <caret line="112" column="8" lean-forward="false" selection-start-line="112" selection-start-column="8" selection-end-line="115" selection-end-column="9" />
           <folding>
             <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="true" />
-            <element signature="e#15941#15942#0" expanded="true" />
+            <element signature="e#16007#16008#0" expanded="true" />
+            <element signature="e#16047#16048#0" expanded="true" />
+            <element signature="e#16075#16076#0" expanded="true" />
+            <element signature="e#16102#16103#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -830,8 +837,10 @@
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="true" />
-            <element signature="e#15941#15942#0" expanded="true" />
+            <element signature="e#16007#16008#0" expanded="true" />
+            <element signature="e#16047#16048#0" expanded="true" />
+            <element signature="e#16075#16076#0" expanded="true" />
+            <element signature="e#16102#16103#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -980,19 +989,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/core/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        <state relative-caret-position="929">
+          <caret line="158" column="29" lean-forward="false" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
           <folding>
             <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#15901#15902#0" expanded="true" />
-            <element signature="e#15941#15942#0" expanded="true" />
+            <element signature="e#16007#16008#0" expanded="true" />
+            <element signature="e#16047#16048#0" expanded="true" />
+            <element signature="e#16075#16076#0" expanded="true" />
+            <element signature="e#16102#16103#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
+        <state relative-caret-position="222">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1002,10 +1013,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/SplendorGui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="70" column="17" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="17" />
+        <state relative-caret-position="68">
+          <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1880#1881#0" expanded="true" />
+            <element signature="e#1956#1957#0" expanded="true" />
           </folding>
         </state>
       </provider>

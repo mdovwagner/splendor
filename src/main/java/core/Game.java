@@ -17,6 +17,7 @@ public class Game {
     private List<Card> display = new ArrayList<>();
 
     private int curr = 0;
+    private int turn = 0;
 
 
     private void addcards(){
@@ -158,6 +159,7 @@ public class Game {
         this.display = new ArrayList<>();
         for (Card c : other.display) this.display.add(new Card(c));
         this.curr = other.curr;
+        this.turn = other.turn;
     }
 
     public List<Card> getDisplay(){
@@ -186,6 +188,7 @@ public class Game {
             }
         } else throw new Exception("Can't pick those gems");
         players.get(curr).drawGems(new Bundle<Gem>(chosen));
+        turn++;
     }
 
     public void buyCard(Card card) throws Exception {
@@ -211,6 +214,7 @@ public class Game {
                 break; // can't get more than one
             }
         }
+        turn++;
     }
 
     public void reserveCard(Card card) throws Exception {
@@ -226,6 +230,7 @@ public class Game {
         if (tier == 2) display.set(i,tier2.remove(0));
         if (tier == 3) display.set(i,tier3.remove(0));
         // bug: END OF GAME RUN OUT
+        turn++;
     }
 
 
@@ -238,6 +243,9 @@ public class Game {
         return players.get(curr);
     }
 
+    public int getTurn() {
+        return turn;
+    }
 
     public final List<Integer> getInputNodes() {
 //        int[] nodes = new int[169]; // 166 is the number of nodes
