@@ -60,11 +60,6 @@ public class SplendorGui extends JPanel {
     }
 
 
-
-
-
-
-
     private JPanel initBoardGems() {
         JPanel boardGems = new JPanel();
         boardGemLabels = new JLabel[splendor.GEM_ORD.length];
