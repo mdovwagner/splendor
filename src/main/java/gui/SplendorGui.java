@@ -130,8 +130,7 @@ public class SplendorGui extends JPanel {
     }
 
     private void updateBoardCards() {
-    	//Why doesnt this work? It isn't updating with the new cards from the display (I also know this isn't ideal but yeah)
-    	initBoardCards();
+    	add(initBoardCards(),BorderLayout.CENTER);
     }
 
     private JPanel initHand() {
