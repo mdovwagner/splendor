@@ -3,6 +3,8 @@ package gui;
 import core.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -68,7 +70,23 @@ public class SplendorGui extends JPanel {
     private void updateController(){
         turns.setText("Turn: "+Integer.toString(splendor.getTurn()));
     }
-
+    
+    private JPanel createCard(int bonus, int[] cost){
+    	JPanel card = new JPanel(new GridLayout(5,3));
+    	card.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    	JLabel bonusLabel = new JLabel(bonus + "");
+    	bonusLabel.setFont(new Font("Arial",20,40));
+    	for(int i = 0; i <5; i ++){
+    		if(i==0) card.add(bonusLabel);
+    		else card.add(new JLabel());
+    		card.add(new JLabel());
+    		JLabel costLabel = new JLabel(cost[i] + "");
+    		costLabel.setForeground(gemColor(Game.GEM_ORD[i]));
+    		costLabel.setFont(new Font("Arial",20,40));
+    		card.add(costLabel);
+    	}
+    	return card;
+    }
 
     private JPanel initBoardGems() {
         JPanel boardGems = new JPanel();
@@ -101,13 +119,11 @@ public class SplendorGui extends JPanel {
         boardCards.setLayout(new GridLayout(3,4));
         for (int i = 0; i < splendor.getDisplay().size(); i++) {
             Card c = splendor.getDisplay().get(i);
-            JLabel label = new JLabel();
-            label.setFont(new Font("Arial",20,16));
-            String text = "Bonus: "+ c.points() + "; Cost: ";
-            for (Gem g : c.cost().keySet()) text += g.toString().substring(0,3) +":"+ c.cost().get(g)+", ";
-            label.setText(text);
-            boardCardLabels[i] = label;
-            boardCards.add(label);
+            int[] cost = new int[5];
+            for(int j = 0; j < 5; j ++){
+            	cost[j] = c.cost().amount(Game.GEM_ORD[j]);
+            }
+            boardCards.add(createCard(c.points(), cost));
         }
         return boardCards;
     }
@@ -125,7 +141,9 @@ public class SplendorGui extends JPanel {
         JPanel hand = new JPanel();
         handLabels = new JLabel[11];
         hand.setName("Hand");
-        hand.setLayout(new GridLayout(1,11));
+        GridLayout handLayout = new GridLayout(1,11);
+        handLayout.setHgap(50);
+        hand.setLayout(handLayout);
         for (int i = 0; i < splendor.GEM_ORD.length; i++) {
             Gem g = splendor.GEM_ORD[i];
             JLabel label = new JLabel();
@@ -171,7 +189,7 @@ public class SplendorGui extends JPanel {
     private Color gemColor(Gem g) {
         switch (g) {
             case RED: return Color.RED;
-            case GREEN: return Color.GREEN;
+            case GREEN: return new Color(0,102,0);
             case BLUE: return Color.BLUE;
             case WHITE: return Color.LIGHT_GRAY;
             case BLACK: return Color.BLACK;
