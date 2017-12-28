@@ -8,6 +8,11 @@ public class Bundle<T> extends HashMap<T,Integer> {
 
     }
 
+    public Bundle(Bundle b) {
+        addBundle(b);
+    }
+
+
     public Bundle(List<T> names, List<Integer> num){
         for (int i = 0; i < names.size(); i++){
             addMultiple(names.get(i),num.get(i));

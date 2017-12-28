@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Player {
-    private String name;
+    private final String name;
     private Bundle<Gem> gems = new Bundle<>();
     private Bundle<Gem> tableau = new Bundle<>();
     private List<Card> reserves = new ArrayList<>();
@@ -12,6 +12,15 @@ public class Player {
 
     public Player(String name){
         this.name = name;
+    }
+
+    public Player(Player other){
+        this.name = other.name;
+        this.gems = new Bundle<>(other.gems);
+        this.tableau = new Bundle<>(other.tableau);
+        this.reserves  = new ArrayList<>();
+        for (Card c : other.reserves) this.reserves.add(new Card(c));
+        this.points = other.points;
     }
 
     public void drawGems(Bundle<Gem> newGems) {
@@ -40,7 +49,6 @@ public class Player {
             	spentGems.addMultiple(Gem.WILD,deficit);
             }
             int spent = Integer.max(gemCost - tableau.amount(g) - deficit,0);
-            System.out.println(g.toString() + " " + spent);
             spentGems.addMultiple(g,spent);
         }
         addCard(card);
@@ -55,6 +63,14 @@ public class Player {
 
     public Bundle<Gem> getTableau() {
         return tableau;
+    }
+
+    public Bundle<Gem> getGems() {
+        return gems;
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public void addPoints(int p) {

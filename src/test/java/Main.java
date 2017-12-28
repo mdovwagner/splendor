@@ -29,19 +29,38 @@ public class Main {
     }
 
     @Test
+    public void testGameCopy() throws Exception {
+        Game g = new Game("Michael","Lewis");
+        System.out.println(g.getDisplay().toString());
+        Game g2 = new Game("Peter","Jim");
+        System.out.println(g2.getDisplay().toString());
+//        g.collectGems(Arrays.asList(Gem.BLUE,Gem.BLUE));
+//        g.collectGems(Arrays.asList(Gem.WHITE,Gem.BLUE, Gem.GREEN));
+//        Card c = new Card(1,Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
+//        System.out.println(g.getDisplay().toString());
+//        Game g2 = new Game(g);
+//        g.buyCard(c);
+////        g.nextPlayer();
+//        System.out.println(g.getDisplay().toString());
+//        System.out.println(g2.getDisplay().toString());
+
+    }
+
+
+//    @Test
     public void testGame() throws Exception {
         Game g = new Game("Michael","Lewis");
-        System.out.println(g.getDisplay().keySet());
+        System.out.println(g.getDisplay());
         //Michael
         g.collectGems(Arrays.asList(Gem.BLUE,Gem.BLUE));
         g.collectGems(Arrays.asList(Gem.WHITE,Gem.BLUE, Gem.GREEN));
-        Card c = new Card(Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
+        Card c = new Card(1,Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
         System.out.println(g.getPlayers().get(0).toString());
         g.reserveCard(c);
         System.out.println(g.getPlayers().get(0).toString());
         g.collectGems(Arrays.asList(Gem.RED,Gem.BLUE, Gem.GREEN));
         System.out.println(g.getPlayers().get(0).toString());
-        Card c2 = new Card(Gem.WHITE,new Bundle<>(Gem.RED,Gem.GREEN,Gem.BLUE,Gem.BLACK),0);
+        Card c2 = new Card(1,Gem.WHITE,new Bundle<>(Gem.RED,Gem.GREEN,Gem.BLUE,Gem.BLACK),0);
         g.buyCard(c2);
         System.out.println(g.getPlayers().get(0).toString());
         g.buyCard(c);
@@ -53,9 +72,9 @@ public class Main {
 
 //    @Test
     public void testPlayers() throws Exception{
-        Card c1 = new Card(Gem.BLACK,new Bundle<Gem>(Gem.RED,Gem.RED,Gem.RED),1);
-        Card c2 = new Card(Gem.RED,new Bundle<Gem>(Gem.BLACK,Gem.GREEN),0);
-        Card c3 = new Card(Gem.GREEN,new Bundle<Gem>(Gem.RED,Gem.BLACK),0);
+        Card c1 = new Card(1,Gem.BLACK,new Bundle<Gem>(Gem.RED,Gem.RED,Gem.RED),1);
+        Card c2 = new Card(1,Gem.RED,new Bundle<Gem>(Gem.BLACK,Gem.GREEN),0);
+        Card c3 = new Card(1,Gem.GREEN,new Bundle<Gem>(Gem.RED,Gem.BLACK),0);
         Player p1 = new Player("Michael");
 
         System.out.println(p1.toString());

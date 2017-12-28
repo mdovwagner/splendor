@@ -4,15 +4,28 @@ public class Card {
     private final Gem gem;
     private final Bundle<Gem> cost;
     private final int points;
+    private final int tier;
 
-    public Card(Gem gem, Bundle<Gem> cost, int points) {
+    public Card(int tier, Gem gem, Bundle<Gem> cost, int points) {
+        this.tier = tier;
         this.gem = gem;
         this.cost = cost;
         this.points = points;
     }
 
+    public Card(Card other) {
+        this.tier = other.tier;
+        this.gem = other.gem;
+        this.cost = other.cost;
+        this.points = other.points;
+    }
+
     public Gem gem() {
         return gem;
+    }
+
+    public int getTier() {
+        return tier;
     }
 
     public Bundle<Gem> cost() {
