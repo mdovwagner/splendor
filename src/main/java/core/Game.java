@@ -136,11 +136,10 @@ public class Game {
         nobles.add(new Noble(3,new Bundle(Arrays.asList(Gem.BLUE,Gem.WHITE),Arrays.asList(4,4))));
 
 
-        for (int i = 0; i < 4; i++) {
-            display.add(tier1.remove(0));
-            display.add(tier2.remove(0));
-            display.add(tier3.remove(0));
-        }
+
+        for (int i = 0; i < 4; i++) display.add(tier3.remove(0));
+        for (int i = 0; i < 4; i++) display.add(tier2.remove(0));
+        for (int i = 0; i < 4; i++) display.add(tier1.remove(0));
 
     }
 
