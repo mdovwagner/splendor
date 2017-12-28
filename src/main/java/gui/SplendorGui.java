@@ -4,6 +4,8 @@ import core.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class SplendorGui extends JPanel {
 
@@ -11,6 +13,8 @@ public class SplendorGui extends JPanel {
     private JLabel[] boardGemLabels ;
     private JLabel[] boardCardLabels;
     private JLabel[] handLabels;
+    // controller
+    private JButton step;
 
     public SplendorGui(Game splendor) {
         this.splendor = splendor;
@@ -24,10 +28,42 @@ public class SplendorGui extends JPanel {
         // Hand points / gems / cards
         JPanel hand = initHand();
         add(hand,BorderLayout.SOUTH);
+        // TODO Nobles
 
-
+        // Controller
+        JPanel controller = initController();
+        add(controller,BorderLayout.WEST);
 
     }
+
+    private void updateAll() {
+        updateBoardGems();
+        updateBoardCards();
+        updateHand();
+    }
+
+
+    private JPanel initController(){
+        JPanel controller = new JPanel();
+        controller.setName("Controller");
+        controller.setLayout(new GridLayout(1,1));
+        step = new JButton("Step");
+        step.addActionListener((e)-> {
+            List<Game> nextMoves = splendor.getNextMoves();
+            if (nextMoves.size() == 0) System.out.println("Out of Moves");
+            Collections.shuffle(nextMoves);
+            splendor = nextMoves.get(0);
+            updateAll();
+        });
+        controller.add(step);
+        return controller;
+    }
+
+
+
+
+
+
 
     private JPanel initBoardGems() {
         JPanel boardGems = new JPanel();
@@ -49,7 +85,7 @@ public class SplendorGui extends JPanel {
     private void updateBoardGems() {
         for (int i = 0; i < splendor.GEM_ORD.length; i++) {
             Gem g = splendor.GEM_ORD[i];
-            boardGemLabels[i].setText(Integer.toString(splendor.getGems().get(g)));
+            boardGemLabels[i].setText(Integer.toString(splendor.getGems().amount(g)));
         }
     }
 
@@ -71,7 +107,7 @@ public class SplendorGui extends JPanel {
         return boardCards;
     }
 
-    public void updateBoardCards() {
+    private void updateBoardCards() {
         for (int i = 0; i < splendor.getDisplay().size(); i++) {
             Card c = splendor.getDisplay().get(i);
             String text = "Bonus: "+ c.points() + "; Cost: ";
@@ -80,7 +116,7 @@ public class SplendorGui extends JPanel {
         }
     }
 
-    public JPanel initHand() {
+    private JPanel initHand() {
         JPanel hand = new JPanel();
         handLabels = new JLabel[11];
         hand.setName("Hand");
@@ -111,7 +147,7 @@ public class SplendorGui extends JPanel {
         return hand;
     }
 
-    void updateHand() {
+    private void updateHand() {
         for (int i = 0; i <splendor.GEM_ORD.length; i++) {
             Gem g = splendor.GEM_ORD[i];
             handLabels[i].setText("G"+Integer.toString(splendor.currPlayer().getGems().amount(g)));
