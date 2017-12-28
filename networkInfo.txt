@@ -1,0 +1,14 @@
+input of NN: game state (hand of gems/cards, board of gems / cards / nobles)
+	Gems in hand: Each type is one node: 1->7 are values
+	Gems on board: Each type is one node: 1->7 are values
+	Cards in hand: Each type is one node: 1->20 are values
+	Cards on board: 12 options: each has 5 types of gem and 5 types of bonus /* issue is that card placement on board doesn't matter in game, but could for this... */
+
+output of NN: the "goodness" of a board state
+goal: decision to make (pick up gems (which ones), buy card (which one))
+
+
+to decide a move, we loop through the possible next states and then pick the one with the best "goodness". (maybe look more moves in advance with some minimax shit???)
+Rinse and repeat.
+
+Run X many games. At the end, throw away the worst and breed (combine with mutation) the best.
