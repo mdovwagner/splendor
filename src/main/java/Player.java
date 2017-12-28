@@ -44,7 +44,7 @@ public class Player {
             int deficit = Integer.max(gemCost - (tableau.amount(g) + gems.amount(g)),0);
             if(deficit > 0){
             	if (deficit > wilds){            	
-                	throw new Exception("Not enough gems");
+                	throw new Exception("Not enough gems for this card");
                 }
             	spentGems.addMultiple(Gem.WILD,deficit);
             }

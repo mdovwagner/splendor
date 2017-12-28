@@ -30,19 +30,9 @@ public class Main {
 
     @Test
     public void testGameCopy() throws Exception {
-        Game g = new Game("Michael","Lewis");
-        System.out.println(g.getDisplay().toString());
-        Game g2 = new Game("Peter","Jim");
-        System.out.println(g2.getDisplay().toString());
-//        g.collectGems(Arrays.asList(Gem.BLUE,Gem.BLUE));
-//        g.collectGems(Arrays.asList(Gem.WHITE,Gem.BLUE, Gem.GREEN));
-//        Card c = new Card(1,Gem.WHITE,new Bundle<>(Gem.BLUE,Gem.BLUE,Gem.BLUE),0);
-//        System.out.println(g.getDisplay().toString());
-//        Game g2 = new Game(g);
-//        g.buyCard(c);
-////        g.nextPlayer();
-//        System.out.println(g.getDisplay().toString());
-//        System.out.println(g2.getDisplay().toString());
+        Game g = new Game("Michael");
+        g = g.getNextMoves().get(0);
+        System.out.println(g.getGems());
 
     }
 

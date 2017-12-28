@@ -5,6 +5,7 @@ public class Game {
 	public static final Gem[] GEM_ORD = { Gem.RED, Gem.GREEN, Gem.BLUE, Gem.WHITE, Gem.BLACK };
     private static final int GEM_NUMBER = 4;
     private static final int NOBLES_NUMBER = 3;
+    private static final int MAX_HAND_SIZE = 10;
     private List<Player> players = new ArrayList<>();
     private Bundle<Gem> gems = new Bundle<>();
     private List<Noble> nobles = new ArrayList<>();
@@ -116,7 +117,7 @@ public class Game {
             players.add(new Player(name));
         }
         // Add gems
-        for (Gem g: Gem.values()){
+        for (Gem g: GEM_ORD){
         	if(g.equals(Gem.WILD)) gems.addMultiple(g, 5);
         	else gems.addMultiple(g,GEM_NUMBER);        
         }
@@ -171,6 +172,7 @@ public class Game {
     }
 
     public void collectGems(List<Gem> chosen) throws Exception{
+        if (currPlayer().getGems().size() + chosen.size() > MAX_HAND_SIZE) throw new Exception("Can't hold that many gems");
     	if(chosen.contains(Gem.WILD)){
     		throw new Exception("Can't pick those gems");
     	} else if (new HashSet<Gem>(chosen).size() != chosen.size() && chosen.size() == 2) {
@@ -186,10 +188,10 @@ public class Game {
     }
 
     public void buyCard(Card card) throws Exception {
-        if (!(display.contains(card)) && !(players.get(curr).getReserves().contains(card))){
+        if (!(display.contains(card)) && !(currPlayer().getReserves().contains(card))){
         	throw new Exception("Card not in play/reserves");
         }
-        Bundle<Gem> spentGems = players.get(curr).buyCard(card);
+        Bundle<Gem> spentGems = currPlayer().buyCard(card);
         gems.addBundle(spentGems);
         // Add new card
         if(display.contains(card)){
@@ -263,7 +265,47 @@ public class Game {
         assert(nodes.size() == 169);
         return nodes;
 
+    }
 
+    public List<Game> getNextMoves() {
+        // Returns copies of game for the next set of moves it can do.
+        // There are 27 possible next moves
+        //      10 = (5 choose 3) ways of picking 3 different colored gems,
+        //      5 ways of picking 2 same colored gems
+        //      12 cards to buy
+        // We will try to do all of them, and if we raise an exception we'll skip it
+        List<Game> moves = new ArrayList<>();
+        for (int i = 0; i < GEM_ORD.length; i++) {
+            for (int j = i+1; j < GEM_ORD.length; j++) {
+                for (int k = j+1; k < GEM_ORD.length; k++) {
+                    try {
+                        Game g = new Game(this);
+                        g.collectGems(Arrays.asList(GEM_ORD[i],GEM_ORD[j],GEM_ORD[k]));
+                        moves.add(g);
+                    } catch (Exception e){
+//                        System.out.println(e);
+                    }
+                }
+            }
+        }
+        for (Gem gem : GEM_ORD) {
+            try {
+                Game g = new Game(this);
+                g.collectGems(Arrays.asList(gem,gem));
+                moves.add(g);
+            } catch (Exception e) {
+
+            }
+        }
+        for (Card c : display) {
+            try {
+                Game g = new Game(this);
+                g.buyCard(c);
+            } catch (Exception e) {
+
+            }
+        }
+        return moves;
     }
 
 
