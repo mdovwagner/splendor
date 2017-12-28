@@ -1,3 +1,5 @@
+package core;
+
 import java.util.*;
 
 public class Game {
@@ -189,7 +191,7 @@ public class Game {
 
     public void buyCard(Card card) throws Exception {
         if (!(display.contains(card)) && !(currPlayer().getReserves().contains(card))){
-        	throw new Exception("Card not in play/reserves");
+        	throw new Exception("core.Card not in play/reserves");
         }
         Bundle<Gem> spentGems = currPlayer().buyCard(card);
         gems.addBundle(spentGems);
@@ -213,7 +215,7 @@ public class Game {
     }
 
     public void reserveCard(Card card) throws Exception {
-    	if (!(display.contains(card))) throw new Exception("Card not in play");
+    	if (!(display.contains(card))) throw new Exception("core.Card not in play");
     	players.get(curr).reserveCard(card);    	
     	if (gems.amount(Gem.WILD) > 0) {
     		gems.subtract(Gem.WILD);

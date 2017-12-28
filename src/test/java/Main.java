@@ -1,9 +1,7 @@
+import core.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
 
@@ -34,7 +32,7 @@ public class Main {
         System.out.println(g.getDisplay());
         g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
         g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
-//        g.buyCard(new Card(1,Gem.BLUE,new Bundle<>(Gem.WHITE,Gem.GREEN,Gem.GREEN,Gem.RED,Gem.RED),0));
+//        g.buyCard(new core.Card(1,core.Gem.BLUE,new core.Bundle<>(core.Gem.WHITE,core.Gem.GREEN,core.Gem.GREEN,core.Gem.RED,core.Gem.RED),0));
 //        System.out.println(g.getDisplay());
         for (Game game : g.getNextMoves()) {
             System.out.println(game.getDisplay());

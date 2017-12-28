@@ -1,3 +1,5 @@
+package core;
+
 public class Noble {
 
     private final Bundle<Gem> cost;

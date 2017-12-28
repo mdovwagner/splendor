@@ -1,4 +1,4 @@
-import java.util.Map;
+package core;
 
 public class Card {
     private final Gem gem;

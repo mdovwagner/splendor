@@ -1,7 +1,7 @@
+package core;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Player {
     private final String name;
@@ -79,7 +79,7 @@ public class Player {
 
     @Override
     public String toString(){
-        return "Player " + name + "\n\tPoints: "+  Integer.toString(points)+ "\n\tCards: " 
+        return "core.Player " + name + "\n\tPoints: "+  Integer.toString(points)+ "\n\tCards: "
         		+ tableau + "\n\tGems: " + gems + "\n\tReserved: " + reserves;
     }
 
