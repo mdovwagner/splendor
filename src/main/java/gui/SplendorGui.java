@@ -91,17 +91,24 @@ public class SplendorGui extends JPanel {
 
     private JPanel initBoardGems() {
         JPanel boardGems = new JPanel();
-        boardGemLabels = new JLabel[splendor.GEM_ORD.length];
+        boardGemLabels = new JLabel[Game.GEM_ORD.length];
         boardGems.setName("Board Gems");
-        boardGems.setLayout(new GridLayout(1,splendor.GEM_ORD.length));
-        for (int i = 0; i < splendor.GEM_ORD.length; i++) {
-            Gem g = splendor.GEM_ORD[i];
+        boardGems.setLayout(new FlowLayout());
+        for (int i = 0; i < Game.GEM_ORD.length; i++) {
+            Gem g = Game.GEM_ORD[i];
             JLabel label = new JLabel();
             label.setForeground(gemColor(g));
             label.setFont(new Font("Arial",20,40));
             label.setText(Integer.toString(splendor.getGems().get(g)));
             boardGemLabels[i] = label;
-            boardGems.add(label);
+            CirclePanel cPanel = new CirclePanel();
+            cPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cl = new GridBagConstraints();
+            cl.gridy = 0;
+            cPanel.add(label);
+            cPanel.setPreferredSize(new Dimension(100,100));
+            cPanel.setForeground(gemColor(g));
+            boardGems.add(cPanel);
         }
         return boardGems;
     }
