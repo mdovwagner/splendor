@@ -2,6 +2,7 @@ package core;
 
 import java.net.ServerSocket;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -34,12 +35,13 @@ public class Play {
     		for(Map.Entry<Network, Integer> entry : prevGen.entrySet()) {
     			Network key = entry.getKey();
 			    int value = entry.getValue();
-			    if(value < threshold) newGen.add(key);
+			    if(value < threshold && !newGen.contains(key)) newGen.add(key);
 			}
     		threshold++;
     	}
     	// add 10 random nets 
     	int extraNets = 0;
+    	HashSet temp = new HashSet(newGen);
     	Network[] prevGenArr = new Network[prevGen.size()];
     	prevGenArr = prevGen.keySet().toArray(prevGenArr);
     	Random rand = new Random();
@@ -48,6 +50,7 @@ public class Play {
     		if(!newGen.contains(prevGenArr[i])) newGen.add(prevGenArr[i]);
     		extraNets ++;
     	}
+    	HashSet temp2 = new HashSet(newGen);
     	// mutate
     	for(Network n : newGen) n.mutate();
     	// fill in rest with children
@@ -82,7 +85,7 @@ public class Play {
             });
         }
         while (results2.size() < 100) {} // this never hits 100
-        System.out.println(results.values().toString());
+        System.out.println(results2.values().toString());
         
         long endTime = System.nanoTime();
         System.out.println("Runtime: "+(endTime - startTime) / 1000000.0 + " ms");
