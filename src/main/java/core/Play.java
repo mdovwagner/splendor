@@ -25,6 +25,7 @@ public class Play {
 
     public static void main(String[] args) throws Exception {
         // First generation
+    	long startTime = System.nanoTime();
 //        ServerSocket socket = new ServerSocket(8000);
         for (int i = 0; i < 100; i++) {
             threadPool.submit(()-> {
@@ -34,8 +35,11 @@ public class Play {
         }
         while (results.size() < 100) {} // spins until everything is done;
         System.out.println(results.values().toString());
+        
+        long endTime = System.nanoTime();
+        System.out.println("Runtime: "+(endTime - startTime) / 1000000.0 + " ms");
         System.exit(0);
-
+        
 
 
 

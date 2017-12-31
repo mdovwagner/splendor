@@ -262,7 +262,9 @@ public class Game {
 
     public Game pickNextMove() {
         List<Game> possibles = getNextMoves();
-        // rows are each move, cols are inout nodes/ move
+        // rows are input nodes for each move
+        // so, number of input nodes = number of columns
+        // number of moves = number of rows
         double[][] inputNodes = new double[possibles.size()][INPUT_NODES];
         for (int row = 0; row < possibles.size(); row++) {
             List<Integer> nodes = possibles.get(row).getInputNodes();
@@ -274,13 +276,15 @@ public class Game {
 //        System.out.println(Arrays.toString(outputNodes));
         double bestOutput = 0;
         Game bestMove = null;
+        int bestMovePosition = 0;
         for (int i = 0; i < outputNodes.length; i++) {
             double node = outputNodes[i];
             if (node > bestOutput) {
                 bestOutput = node;
-                bestMove = possibles.get(i);
+                bestMovePosition = i;
             }
         }
+        bestMove = possibles.get(bestMovePosition);
         return bestMove;
     }
 
