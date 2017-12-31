@@ -2,3 +2,4 @@ https://web.stanford.edu/group/pdplab/pdphandbook/handbookch10.html -TD Learning
 https://www.cs.cornell.edu/boom/2001sp/Tsinteris/gammon.htm -BackGammon
 http://lumiverse.io/video/part-4-backpropagation -vid series on basic neural net
 https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1 -easy python example
+http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf - genetic mutation from MarI/O

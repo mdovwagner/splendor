@@ -5,7 +5,7 @@ import Jama.Matrix;
 import java.util.Arrays;
 
 /**
- * Network of 169 nodes -> 169 nodes -> 1 node
+ * Network of 169 nodes -> 60 nodes -> 1 node
  * 1 bias input node connects to all the hidden nodes and the output node
  */
 public class Network {
@@ -17,8 +17,9 @@ public class Network {
 
 
     public Network() {
-        weights_1 = Matrix.random(INPUT_SIZE,HIDDEN_SIZE);
-        weights_2 = Matrix.random(HIDDEN_SIZE,1);
+    	// Add 1 for bias weights
+        weights_1 = Matrix.random(INPUT_SIZE + 1,HIDDEN_SIZE);
+        weights_2 = Matrix.random(HIDDEN_SIZE + 1,1);
     }
 
     /**
@@ -27,18 +28,15 @@ public class Network {
      * @return the matrix multiplication of inputs * weights
      */
     private Matrix forward(Matrix inputs) {
-        // sums each weight for the hidden layer of nodes (nodes_2)
-        // Then applies the sigmoid function element wise to each value
+        // sums each weight for the hidden layer of nodes (nodes_2) with bias
         Matrix nodes_2 = (inputs.times(weights_1));
-//        System.out.println(Arrays.toString(nodes_2.getArray()[0]));
-
-        Matrix outputs = (nodes_2.times(weights_2));
+        // adds column of 1s to add constant bias to output
+        Matrix nodes_2WithOnes = addOnesColumn(nodes_2);
+        Matrix outputs = (nodes_2WithOnes.times(weights_2));
 //        System.out.println(Arrays.toString(outputs.getArray()[0]));
         return outputs;
 
     }
-
-
 
     /**
      * Apply's the NN on an array of input nodes, returning the output node.
@@ -48,13 +46,25 @@ public class Network {
     public double[] apply(double[][] inputNodes) {
         // TODO add bias nodes...
         Matrix inputs = new Matrix(inputNodes);
-
-        Matrix outputNode = forward(inputs).transpose();
+        // Add constant column of 1s
+        Matrix inputsWithOnes = addOnesColumn(inputs);
+        Matrix outputNode = forward(inputsWithOnes).transpose();
         assert(outputNode.getRowDimension() == 1);
         return outputNode.getArray()[0]; // it's a 2D array but only one row
     }
 
-
+    private Matrix addOnesColumn(Matrix z){
+    	double[][] out = new double[z.getRowDimension()][z.getColumnDimension() + 1];
+    	for(int i = 0; i < z.getRowDimension(); i++){
+    		for(int j = 0; j < z.getColumnDimension(); j++){
+    			out[i][j] = z.getArray()[i][j];
+    		}
+    		out[i][z.getColumnDimension()] = 1;
+    	}
+    	return new Matrix(out);
+    }
+    
+    
     private Matrix sigmoid(Matrix z) {
         Matrix n = new Matrix(z.getRowDimension(),z.getColumnDimension());
         for(int row = 0; row < z.getRowDimension(); row ++) {
