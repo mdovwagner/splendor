@@ -16,7 +16,7 @@ public class Main {
 
         // Create the game UI and setup. You will need to write
         // your own GUI classes under the "gui" package.
-        Game game = new Game("Michael");
+        Game game = new Game(new Network(),"Michael");
         JFrame frame = new JFrame("Splendor");
         SplendorGui panel = new SplendorGui(game);
 //        game.setGameListener(panel);

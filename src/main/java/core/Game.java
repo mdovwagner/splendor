@@ -116,8 +116,9 @@ public class Game {
 
 
 
-    public Game(String... playerNames) {
-        network = new Network();
+    public Game(Network network, String... playerNames) {
+//        network = new Network();
+        this.network = network;
         // Add players
         for (String name : playerNames) {
             players.add(new Player(name));
@@ -251,6 +252,14 @@ public class Game {
         return turn;
     }
 
+
+    public boolean isGameOver() {
+        for (Player p : players) {
+            if (p.getPoints() >= 15) return true;
+        }
+        return false;
+    }
+
     public Game pickNextMove() {
         List<Game> possibles = getNextMoves();
         // rows are each move, cols are inout nodes/ move
@@ -262,6 +271,7 @@ public class Game {
             }
         }
         double[] outputNodes = network.apply(inputNodes);
+//        System.out.println(Arrays.toString(outputNodes));
         double bestOutput = 0;
         Game bestMove = null;
         for (int i = 0; i < outputNodes.length; i++) {
@@ -273,6 +283,7 @@ public class Game {
         }
         return bestMove;
     }
+
 
 
 

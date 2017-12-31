@@ -2,20 +2,23 @@ package core;
 
 import Jama.Matrix;
 
+import java.util.Arrays;
+
 /**
  * Network of 169 nodes -> 169 nodes -> 1 node
  * 1 bias input node connects to all the hidden nodes and the output node
  */
 public class Network {
     private static final int INPUT_SIZE = 169; // 169 is the number of input nodes per game_state;
-    private static final int HIDDEN_SIZE = 169;
+    private static final int HIDDEN_SIZE = 60;
     // init weights randomly
-    private Matrix weights_1 = Matrix.random(INPUT_SIZE,HIDDEN_SIZE); // from input -> hidden
-    private Matrix weights_2 = Matrix.random(INPUT_SIZE,1); // from hidden -> output
+    public Matrix weights_1;  // from input -> hidden
+    private Matrix weights_2; // from hidden -> output
 
 
     public Network() {
-
+        weights_1 = Matrix.random(INPUT_SIZE,HIDDEN_SIZE);
+        weights_2 = Matrix.random(HIDDEN_SIZE,1);
     }
 
     /**
@@ -26,8 +29,11 @@ public class Network {
     private Matrix forward(Matrix inputs) {
         // sums each weight for the hidden layer of nodes (nodes_2)
         // Then applies the sigmoid function element wise to each value
-        Matrix nodes_2 = sigmoid(inputs.times(weights_1));
-        Matrix outputs = sigmoid(nodes_2.times(weights_2));
+        Matrix nodes_2 = (inputs.times(weights_1));
+//        System.out.println(Arrays.toString(nodes_2.getArray()[0]));
+
+        Matrix outputs = (nodes_2.times(weights_2));
+//        System.out.println(Arrays.toString(outputs.getArray()[0]));
         return outputs;
 
     }
@@ -42,7 +48,8 @@ public class Network {
     public double[] apply(double[][] inputNodes) {
         // TODO add bias nodes...
         Matrix inputs = new Matrix(inputNodes);
-        Matrix outputNode = forward(inputs);
+
+        Matrix outputNode = forward(inputs).transpose();
         assert(outputNode.getRowDimension() == 1);
         return outputNode.getArray()[0]; // it's a 2D array but only one row
     }

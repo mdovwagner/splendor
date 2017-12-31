@@ -8,6 +8,8 @@ public class Main {
     @Test
     public void testNetwork() throws Exception {
         Network n = new Network();
+        Game g = new Game(n,"Michael");
+        g.pickNextMove();
     }
 
 
@@ -34,7 +36,7 @@ public class Main {
 
 //    @Test
     public void testGameCopy() throws Exception {
-        Game g = new Game("Michael");
+        Game g = new Game(null,"Michael");
         System.out.println(g.getDisplay());
         g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
         g.collectGems(Arrays.asList(Gem.RED,Gem.GREEN,Gem.WHITE));
@@ -49,7 +51,7 @@ public class Main {
 
 //    @Test
     public void testGame() throws Exception {
-        Game g = new Game("Michael","Lewis");
+        Game g = new Game(null,"Michael","Lewis");
         System.out.println(g.getDisplay());
         //Michael
         g.collectGems(Arrays.asList(Gem.BLUE,Gem.BLUE));
