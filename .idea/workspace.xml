@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3bfb5f57-8a8a-4c01-944f-18fff5277f5b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gov_nist_math_jama_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/core/Network.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/gui/SplendorGui$1.class" afterPath="$PROJECT_DIR$/out/production/classes/gui/SplendorGui$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/gui/SplendorGui.class" afterPath="$PROJECT_DIR$/out/production/classes/gui/SplendorGui.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/splendor.iml" afterPath="$PROJECT_DIR$/.idea/modules/splendor.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/core/Game.java" afterPath="$PROJECT_DIR$/src/main/java/core/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" afterPath="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Main.java" afterPath="$PROJECT_DIR$/src/test/java/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -25,40 +32,52 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="929">
-              <caret line="158" column="29" lean-forward="false" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+            <state relative-caret-position="133">
+              <caret line="282" column="16" lean-forward="false" selection-start-line="282" selection-start-column="11" selection-end-line="282" selection-end-column="16" />
               <folding>
                 <element signature="method#addcards#0;class#Game#0" expanded="false" />
-                <element signature="e#16007#16008#0" expanded="true" />
-                <element signature="e#16047#16048#0" expanded="true" />
-                <element signature="e#16075#16076#0" expanded="true" />
-                <element signature="e#16102#16103#0" expanded="true" />
+                <element signature="e#16161#16162#0" expanded="true" />
+                <element signature="e#16201#16202#0" expanded="true" />
+                <element signature="e#16229#16230#0" expanded="true" />
+                <element signature="e#16256#16257#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Network.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/core/Network.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="12" column="55" lean-forward="true" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SplendorGui.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gui/SplendorGui.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="59" column="42" lean-forward="true" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1967#1968#0" expanded="true" />
+                <element signature="e#2043#2044#0" expanded="true" />
+                <element signature="e#4572#4573#0" expanded="true" />
+                <element signature="e#4626#4627#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SplendorGui.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/SplendorGui.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1880#1881#0" expanded="true" />
-                <element signature="e#1956#1957#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,6 +90,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -376,12 +396,14 @@
         <option value="$PROJECT_DIR$/src/main/java/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/Noble.java" />
         <option value="$PROJECT_DIR$/src/main/java/Player.java" />
-        <option value="$PROJECT_DIR$/src/test/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/GemCircle.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/Main.java" />
+        <option value="$PROJECT_DIR$/src/test/java/core/NetworkTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/gui/SplendorGui.java" />
+        <option value="$PROJECT_DIR$/src/main/java/core/Network.java" />
       </list>
     </option>
   </component>
@@ -440,7 +462,28 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="splendor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="splendorAI" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="splendor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="splendorAI" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="splendor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="splendorAI" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -450,14 +493,25 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="core" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="core" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -613,18 +667,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Main - 2017.12.27 at 22h 09m 09s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Main - 2017.12.27 at 22h 09m 52s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Main - 2017.12.27 at 22h 11m 02s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Main - 2017.12.27 at 22h 11m 23s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Main - 2017.12.27 at 22h 12m 39s.xml">
       <configuration name="Main" configurationId="JUnit" />
     </history-entry>
@@ -641,6 +683,18 @@
       <configuration name="Main" configurationId="JUnit" />
     </history-entry>
     <history-entry file="Main - 2017.12.27 at 22h 14m 45s.xml">
+      <configuration name="Main" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Main - 2017.12.30 at 17h 52m 07s.xml">
+      <configuration name="Main" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Main - 2017.12.30 at 17h 52m 39s.xml">
+      <configuration name="Main" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Main - 2017.12.30 at 17h 53m 21s.xml">
+      <configuration name="Main" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Main - 2017.12.30 at 19h 43m 41s.xml">
       <configuration name="Main" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -694,10 +748,10 @@
           <caret line="112" column="8" lean-forward="false" selection-start-line="112" selection-start-column="8" selection-end-line="115" selection-end-column="9" />
           <folding>
             <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#16007#16008#0" expanded="true" />
-            <element signature="e#16047#16048#0" expanded="true" />
-            <element signature="e#16075#16076#0" expanded="true" />
-            <element signature="e#16102#16103#0" expanded="true" />
+            <element signature="e#16161#16162#0" expanded="true" />
+            <element signature="e#16201#16202#0" expanded="true" />
+            <element signature="e#16229#16230#0" expanded="true" />
+            <element signature="e#16256#16257#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -707,9 +761,9 @@
         <state relative-caret-position="340">
           <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#204#205#0" expanded="false" />
+            <element signature="e#232#233#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -806,9 +860,9 @@
         <state relative-caret-position="70">
           <caret line="38" column="32" lean-forward="false" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#204#205#0" expanded="false" />
+            <element signature="e#232#233#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -837,10 +891,10 @@
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
             <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#16007#16008#0" expanded="true" />
-            <element signature="e#16047#16048#0" expanded="true" />
-            <element signature="e#16075#16076#0" expanded="true" />
-            <element signature="e#16102#16103#0" expanded="true" />
+            <element signature="e#16161#16162#0" expanded="true" />
+            <element signature="e#16201#16202#0" expanded="true" />
+            <element signature="e#16229#16230#0" expanded="true" />
+            <element signature="e#16256#16257#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -962,19 +1016,9 @@
         <state relative-caret-position="51">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#204#205#0" expanded="false" />
+            <element signature="e#232#233#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -987,24 +1031,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/core/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="929">
-          <caret line="158" column="29" lean-forward="false" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+        <state relative-caret-position="222">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="method#addcards#0;class#Game#0" expanded="false" />
-            <element signature="e#16007#16008#0" expanded="true" />
-            <element signature="e#16047#16048#0" expanded="true" />
-            <element signature="e#16075#16076#0" expanded="true" />
-            <element signature="e#16102#16103#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/Main.java">
+    <entry file="file://$PROJECT_DIR$/networkInfo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/core/NetworkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="282" column="16" lean-forward="false" selection-start-line="282" selection-start-column="11" selection-end-line="282" selection-end-column="16" />
+          <folding>
+            <element signature="method#addcards#0;class#Game#0" expanded="false" />
+            <element signature="e#16161#16162#0" expanded="true" />
+            <element signature="e#16201#16202#0" expanded="true" />
+            <element signature="e#16229#16230#0" expanded="true" />
+            <element signature="e#16256#16257#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1013,13 +1083,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/SplendorGui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="30" />
+        <state relative-caret-position="272">
+          <caret line="59" column="42" lean-forward="true" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1880#1881#0" expanded="true" />
-            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2043#2044#0" expanded="true" />
+            <element signature="e#4572#4573#0" expanded="true" />
+            <element signature="e#4626#4627#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/core/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="12" column="55" lean-forward="true" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,7 +1180,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Gradle: junit:junit:4.12</last-edited>
+          <last-edited>gov.nist.math:jama:1.0.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

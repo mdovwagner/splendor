@@ -55,8 +55,9 @@ public class SplendorGui extends JPanel {
         step.addActionListener((e)-> {
             List<Game> nextMoves = splendor.getNextMoves();
             if (nextMoves.size() == 0) System.out.println("Out of Moves");
-            Collections.shuffle(nextMoves);
-            splendor = nextMoves.get(0);
+            splendor = splendor.pickNextMove();
+//            Collections.shuffle(nextMoves);
+//            splendor = nextMoves.get(0);
             updateAll();
         });
         controller.add(step);

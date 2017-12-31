@@ -5,6 +5,12 @@ import java.util.Arrays;
 
 public class Main {
 
+    @Test
+    public void testNetwork() throws Exception {
+        Network n = new Network();
+    }
+
+
 
 //    @Test
     public void testPiles() throws Exception{
@@ -26,7 +32,7 @@ public class Main {
 
     }
 
-    @Test
+//    @Test
     public void testGameCopy() throws Exception {
         Game g = new Game("Michael");
         System.out.println(g.getDisplay());

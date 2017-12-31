@@ -8,6 +8,7 @@ public class Game {
     private static final int GEM_NUMBER = 4;
     private static final int NOBLES_NUMBER = 3;
     private static final int MAX_HAND_SIZE = 10;
+    private static final int INPUT_NODES = 169;
     private List<Player> players = new ArrayList<>();
     private Bundle<Gem> gems = new Bundle<>();
     private List<Noble> nobles = new ArrayList<>();
@@ -15,6 +16,7 @@ public class Game {
     private List<Card> tier2 = new ArrayList<>();
     private List<Card> tier3 = new ArrayList<>();
     private List<Card> display = new ArrayList<>();
+    private final Network network;
 
     private int curr = 0;
     private int turn = 0;
@@ -115,6 +117,7 @@ public class Game {
 
 
     public Game(String... playerNames) {
+        network = new Network();
         // Add players
         for (String name : playerNames) {
             players.add(new Player(name));
@@ -160,6 +163,7 @@ public class Game {
         for (Card c : other.display) this.display.add(new Card(c));
         this.curr = other.curr;
         this.turn = other.turn;
+        this.network = other.network;
     }
 
     public List<Card> getDisplay(){
@@ -247,6 +251,31 @@ public class Game {
         return turn;
     }
 
+    public Game pickNextMove() {
+        List<Game> possibles = getNextMoves();
+        // rows are each move, cols are inout nodes/ move
+        double[][] inputNodes = new double[possibles.size()][INPUT_NODES];
+        for (int row = 0; row < possibles.size(); row++) {
+            List<Integer> nodes = possibles.get(row).getInputNodes();
+            for (int col = 0; col < INPUT_NODES; col++) {
+                inputNodes[row][col] = nodes.get(col);
+            }
+        }
+        double[] outputNodes = network.apply(inputNodes);
+        double bestOutput = 0;
+        Game bestMove = null;
+        for (int i = 0; i < outputNodes.length; i++) {
+            double node = outputNodes[i];
+            if (node > bestOutput) {
+                bestOutput = node;
+                bestMove = possibles.get(i);
+            }
+        }
+        return bestMove;
+    }
+
+
+
     public final List<Integer> getInputNodes() {
 //        int[] nodes = new int[169]; // 166 is the number of nodes
         List<Integer> nodes = new ArrayList<>();
@@ -271,7 +300,7 @@ public class Game {
             nodes.add(n.points());
             nodes.add(n.isBoughtYet() ? 1:0);
         }
-        assert(nodes.size() == 169);
+        assert(nodes.size() == INPUT_NODES);
         return nodes;
 
     }
