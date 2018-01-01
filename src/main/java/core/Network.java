@@ -3,6 +3,7 @@ package core;
 import Jama.Matrix;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Network of 169 nodes -> 60 nodes -> 1 node
@@ -10,7 +11,8 @@ import java.util.Arrays;
  */
 public class Network {
     private static final int INPUT_SIZE = 169; // 169 is the number of input nodes per game_state;
-    private static final int HIDDEN_SIZE = 169;
+    private static final int HIDDEN_SIZE = 60;
+    private static final double MUTATION_CHANCE = 0.9;
     // init weights randomly
     public Matrix weights_1;  // from input -> hidden
     private Matrix weights_2; // from hidden -> output
@@ -20,6 +22,11 @@ public class Network {
     	// Add 1 for bias weights
         weights_1 = Matrix.random(INPUT_SIZE + 1,HIDDEN_SIZE);
         weights_2 = Matrix.random(HIDDEN_SIZE + 1,1);
+    }
+    
+    public Network(Network n){
+    	weights_1 = n.weights_1;
+    	weights_2 = n.weights_2;
     }
 
     /**
@@ -64,6 +71,63 @@ public class Network {
     	return new Matrix(out);
     }
     
+    public static Network breed(Network father, Network mother){
+    	Network child = new Network();
+    	Random rand = new Random();
+    	for(int i = 0; i < INPUT_SIZE + 1; i ++){
+    		for(int j = 0; j < HIDDEN_SIZE; j ++){
+    			Boolean mix = rand.nextBoolean();
+    			if(mix){ // mix arbitrarily half the time
+    				double t = rand.nextDouble();
+    				child.weights_1.getArray()[i][j] = t * mother.weights_1.getArray()[i][j] + 
+    						(1-t) * father.weights_1.getArray()[i][j];
+    			}
+    			else{ // pick one parent half the time
+    				Boolean parent = rand.nextBoolean();
+    				if(parent) child.weights_1.getArray()[i][j] = mother.weights_1.getArray()[i][j];
+    				else child.weights_1.getArray()[i][j] = father.weights_1.getArray()[i][j];
+    			}
+    		}
+    	}
+    	for(int i = 0; i < HIDDEN_SIZE + 1; i ++){
+    		Boolean mix = rand.nextBoolean();
+    		if(mix){ // mix arbitrarily half the time
+    			double t = rand.nextDouble();
+    			child.weights_2.getArray()[i][0] = t * mother.weights_2.getArray()[i][0] + 
+    					(1-t) * father.weights_2.getArray()[i][0];
+    		}
+    		else{ // pick one parent half the time
+    			Boolean parent = rand.nextBoolean();
+    			if(parent) child.weights_2.getArray()[i][0] = mother.weights_2.getArray()[i][0];
+    			else child.weights_2.getArray()[i][0] = father.weights_2.getArray()[i][0];
+    		}
+    	}
+        return child;
+    }
+    
+    public void mutate(){
+    	Random rand = new Random();
+    	for(int i = 0; i < INPUT_SIZE + 1; i ++){
+    		for(int j = 0; j < HIDDEN_SIZE; j ++){
+    			double mutationPercent = rand.nextDouble();
+    			// Mutate 10%
+    			if(mutationPercent > MUTATION_CHANCE){
+    				double mutationAmt = rand.nextDouble();
+    				// Mutate so it is still has same expected value
+    				weights_1.getArray()[i][j] = mutationAmt * 2 * weights_1.getArray()[i][j];
+    			}
+    		}
+    	}
+    	for(int i = 0; i < HIDDEN_SIZE + 1; i ++){
+    		double mutationPercent = rand.nextDouble();
+			// Mutate 10%
+			if(mutationPercent > MUTATION_CHANCE){
+				double mutationAmt = rand.nextDouble();
+				// Mutate so it is still has same expected value
+				weights_2.getArray()[i][0] = mutationAmt * 2 * weights_2.getArray()[i][0];
+			}
+    	}
+    }
     
     private Matrix sigmoid(Matrix z) {
         Matrix n = new Matrix(z.getRowDimension(),z.getColumnDimension());
