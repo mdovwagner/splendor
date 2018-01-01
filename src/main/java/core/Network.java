@@ -11,8 +11,8 @@ import java.util.Random;
  */
 public class Network {
     private static final int INPUT_SIZE = 169; // 169 is the number of input nodes per game_state;
-    private static final int HIDDEN_SIZE = 60;
-    private static final double MUTATION_CHANCE = 0.9;
+    private static final int HIDDEN_SIZE = 169;
+    private static final double MUTATION_CHANCE = 0.7;
     // init weights randomly
     public Matrix weights_1;  // from input -> hidden
     private Matrix weights_2; // from hidden -> output

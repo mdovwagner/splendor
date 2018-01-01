@@ -1,11 +1,7 @@
 package core;
 
 import java.net.ServerSocket;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
@@ -15,7 +11,8 @@ public class Play {
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(16);
 //    private static final List<Integer> results = new CopyOnWriteArrayList<>();
     private static final Map<Network,Integer> results = new ConcurrentHashMap<>();
-    private static final Map<Network,Integer> results2 = new ConcurrentHashMap<>();
+    private static final int GENERATIONS = 500;
+    private static final int GAMES_PER_GEN = 100;
 
 
 
@@ -69,24 +66,34 @@ public class Play {
         // First generation
     	long startTime = System.nanoTime();
 //        ServerSocket socket = new ServerSocket(8000);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < GAMES_PER_GEN; i++) {
             threadPool.submit(()-> {
                 Network network = new Network();
                 results.put(network,runOneGame(network));
             });
         }
-        while (results.size() < 100) {} // spins until everything is done;
+        while (results.size() < GAMES_PER_GEN) {} // spins until everything is done;
         System.out.println(results.values().toString());
-        // Second generation
-        List<Network> secondGen = evolve(results); // This has size 100
-        for (Network network : secondGen) {
-            threadPool.submit(()-> {
-                results2.put(network,runOneGame(network));
-            });
+        // next generation
+        int generation = 0;
+        while (generation < GENERATIONS) {
+            generation++;
+            List<Network> secondGen = evolve(results); // This has size GAMES_PER_GEN
+            results.clear();
+            for (Network network : secondGen) {
+                threadPool.submit(() -> {
+                    results.put(network, runOneGame(network));
+                });
+            }
+            while (results.size() < GAMES_PER_GEN) {
+            } // this never hits 100
+            System.out.println(results.values().toString());
+            String s = "Gen: "+generation;
+            s+= ", Min: " + Integer.toString(Collections.min(results.values()));
+            s+= ", Avg: " + results.values().stream().mapToInt(i->i).sum()/results.size();
+            System.out.println(s);
+
         }
-        while (results2.size() < 100) {} // this never hits 100
-        System.out.println(results2.values().toString());
-        
         long endTime = System.nanoTime();
         System.out.println("Runtime: "+(endTime - startTime) / 1000000.0 + " ms");
         System.exit(0);
